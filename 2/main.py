@@ -5,26 +5,14 @@ def main() -> None:
     with open('input.txt') as f:
         lines = f.read().splitlines()
 
-    processed_file = process_file(lines)
-    check_passwords(processed_file)
+    suitable = 0
+    for line in lines:
+        extracted = line.replace('-', ' ').replace(':', '').split(' ')
+        letter_count = extracted[3].count(extracted[2])
+        if letter_count >= int(extracted[0]) and letter_count <= int(extracted[1]):
+            suitable += 1
 
-
-def process_file(file):
-    refactored = []
-    for line in file:
-        refactored.append(line.replace('-', ' ').replace(':', '').split(' '))
-
-    return refactored
-
-
-def check_passwords(passwords):
-    suitable_passwords = 0
-    for password in passwords:
-        letter_count = password[3].count(password[2])
-        if letter_count >= int(password[0]) and letter_count <= int(password[1]):
-            suitable_passwords += 1
-
-    print(f'{suitable_passwords}')
+    print(f'{suitable}')
 
 
 if __name__ == "__main__":
