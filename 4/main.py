@@ -59,7 +59,6 @@ def part_two(lines) -> int:
         if(valid == 7):
             valid_passports.append(line)
 
-    print(valid_passports)
     return valid_passports
 
 
