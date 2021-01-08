@@ -2,11 +2,7 @@ import os
 
 
 def main() -> None:
-    with open('input.txt') as f:
-        instructions = [
-            int(line)
-            for line in f.read().splitlines()
-        ]
+    instructions = [int(line.strip()) for line in open("input.txt", 'r')]
 
     solution_part_one = part_1(instructions)
     print(solution_part_one)
